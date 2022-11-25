@@ -57,7 +57,7 @@ for (let i = 0; i < json.content.length; i++) {
   slide.appendChild(content);
 
   slider.appendChild(slide);
-  createClass(`.slide:nth-child(${i+1}).load`,`background: url('${element.image}') no-repeat center center/cover;`);  
+  createClass(`.slide:nth-child(${i+1}).load`,`background: url('${element.image}') no-repeat center center/contain;`);  
 }
 
 const slides = document.querySelectorAll('.slide');
