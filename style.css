@@ -65,11 +65,13 @@ body {
   height: 100%;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
+  visibility: hidden;
   background: url('./images/placeholder.svg') no-repeat center center/cover;
 }
 
 .slide.current {
   opacity: 1;
+  visibility: visible;
 }
 
 .slide .content {

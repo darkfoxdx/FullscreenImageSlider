@@ -10,7 +10,7 @@ data =
         {
             "image":"photo2.jpeg",
             "title":"Test, Digital",
-            "desc":null
+            "desc":"Link is www.google.com"
         },
         {
             "image":"photo3.jpeg",
