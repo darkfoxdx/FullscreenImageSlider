@@ -1,4 +1,7 @@
 const slider = document.querySelector('.slider');
+const intro = document.querySelector('.intro');
+const main = document.querySelector('.main');
+const start = document.querySelector('#start');
 const next = document.querySelector('#next');
 const prev = document.querySelector('#prev');
 const auto = false;
@@ -16,9 +19,11 @@ function createClass(name,rules){
       style.sheet.insertRule(name+"{"+rules+"}",0);
 }
 
+let introText = document.createTextNode(data.intro);
+intro.appendChild(introText);
 
-for (let i = 0; i < data.length; i++) {
-  const element = data[i];
+for (let i = 0; i < data.content.length; i++) {
+  const element = data.content[i];
 
   let content = document.createElement('div');
   content.className = 'content';
@@ -38,7 +43,7 @@ for (let i = 0; i < data.length; i++) {
 
   let slide = document.createElement('div');
   if (i == 0) {
-    slide.className = 'slide load current ';
+    slide.className = 'slide load';
   } else if (i == 1) {
     slide.className = 'slide load';
   } else {
@@ -51,6 +56,13 @@ for (let i = 0; i < data.length; i++) {
 }
 
 const slides = document.querySelectorAll('.slide');
+
+const startSlide = () => {
+  slides[0].classList.add('current');
+  main.style.visibility = 'hidden'
+  prev.style.visibility = 'visible';
+  next.style.visibility = 'visible';
+}
 
 const nextSlide = () => {
   // Get current class
@@ -88,6 +100,10 @@ const prevSlide = () => {
 };
 
 // Button events
+start.addEventListener('click', e => {
+  startSlide();
+});
+
 next.addEventListener('click', e => {
   nextSlide();
   if(auto) {
