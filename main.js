@@ -6,12 +6,14 @@ const next = document.querySelector('#next');
 const prev = document.querySelector('#prev');
 const auto = false;
 const intervalTime = 5000;
-let json = sample;
+let json;
 let slideInterval;
 
 if (typeof data !== 'undefined' && data !== null) {
   json = data;
-}
+} else if  (typeof sample !== 'undefined' && sample !== null) {
+  json = sample;
+} 
 
 let style = document.createElement('style');
 document.getElementsByTagName('head')[0].appendChild(style);
