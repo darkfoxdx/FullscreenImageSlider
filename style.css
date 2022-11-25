@@ -86,6 +86,10 @@ body {
 }
 
 .slide .content h1 {
+  margin-bottom: -12px;
+}
+
+.slide .content p.subtitle {
   margin-bottom: 10px;
 }
 

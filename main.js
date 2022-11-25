@@ -33,23 +33,34 @@ for (let i = 0; i < json.content.length; i++) {
 
   let content = document.createElement('div');
   content.className = 'content';
-  let title = document.createElement('h1');
+
   if (element.title !== null) {
-    let titleText = document.createTextNode(element.title);
-    title.appendChild(titleText);
+    let title = document.createElement('h1');
+    let text = document.createTextNode(element.title);
+    title.appendChild(text);
+
+    content.appendChild(title);
   }
 
-  let p = document.createElement('p');
-  if (element.desc !== null) {
-    p.innerHTML = linkify(element.desc);
+  if (element.subtitle !== null) {
+    let pSubtitle = document.createElement('p');
+    pSubtitle.className = 'subtitle';
+    let text = document.createTextNode(element.subtitle);
+    pSubtitle.appendChild(text);
+
+    content.appendChild(pSubtitle);
   }
-  content.appendChild(title);
-  content.appendChild(p);
+
+  if (element.desc !== null) {
+    let pDesc = document.createElement('p');
+    pDesc.className = 'desc';
+    pDesc.innerHTML = linkify(element.desc);
+
+    content.appendChild(pDesc);
+  }
 
   let slide = document.createElement('div');
-  if (i === 0) {
-    slide.className = 'slide load';
-  } else if (i === 1) {
+  if (i === 0 || i === 1 || i === json.content.length-1) {
     slide.className = 'slide load';
   } else {
     slide.className = 'slide';
@@ -97,9 +108,13 @@ const prevSlide = () => {
   if(current.previousElementSibling) {
     // Add current to next sibling
     current.previousElementSibling.classList.add('current');
+    if (current.previousElementSibling.previousElementSibling) {
+      current.previousElementSibling.previousElementSibling.classList.add('load');
+    }
   } else {
     // Add current to last
     slides[slides.length - 1].classList.add('current');
+    slides[slides.length - 2].classList.add('load');
   }
   setTimeout(() => current.classList.remove('current'));
 };
