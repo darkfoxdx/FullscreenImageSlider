@@ -6,8 +6,12 @@ const next = document.querySelector('#next');
 const prev = document.querySelector('#prev');
 const auto = false;
 const intervalTime = 5000;
+let json = sample;
 let slideInterval;
 
+if (typeof data !== 'undefined' && data !== null) {
+  json = data;
+}
 
 let style = document.createElement('style');
 document.getElementsByTagName('head')[0].appendChild(style);
@@ -19,11 +23,11 @@ function createClass(name,rules){
       style.sheet.insertRule(name+"{"+rules+"}",0);
 }
 
-let introText = document.createTextNode(data.intro);
+let introText = document.createTextNode(json.intro);
 intro.appendChild(introText);
 
-for (let i = 0; i < data.content.length; i++) {
-  const element = data.content[i];
+for (let i = 0; i < json.content.length; i++) {
+  const element = json.content[i];
 
   let content = document.createElement('div');
   content.className = 'content';
@@ -51,7 +55,7 @@ for (let i = 0; i < data.content.length; i++) {
   slide.appendChild(content);
 
   slider.appendChild(slide);
-  createClass(`.slide:nth-child(${i+1}).load`,`background: url('./images/${element.image}') no-repeat center center/cover;`);  
+  createClass(`.slide:nth-child(${i+1}).load`,`background: url('${element.image}') no-repeat center center/cover;`);  
 }
 
 const slides = document.querySelectorAll('.slide');
