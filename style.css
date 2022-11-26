@@ -137,6 +137,10 @@ body {
   .slide.current .content {
     transform: translateY(-300px);
   }
+
+  .buttons button#next {
+    opacity: 0;
+  }
 }
 
 @keyframes shake {
