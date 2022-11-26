@@ -142,6 +142,23 @@ prev.addEventListener('click', e => {
   }
 
 });
+// Swiping
+let touchstartX = 0
+let touchendX = 0
+    
+function checkDirection() {
+  if (touchendX < touchstartX) nextSlide();
+  if (touchendX > touchstartX) prevSlide();
+}
+
+document.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+})
+
+document.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  checkDirection();
+})
 
 // Auto slide
 if(auto) {
