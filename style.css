@@ -138,7 +138,7 @@ body {
     transform: translateY(-300px);
   }
 
-  .buttons button#next {
+  .buttons button {
     opacity: 0;
   }
 }
